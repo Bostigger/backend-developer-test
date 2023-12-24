@@ -16,7 +16,7 @@ trait AchievementHandlerTrait
      *
      * @return AchievementService
      */
-    abstract protected function getAchievementService();
+    abstract protected function getAchievementService(): AchievementService;
 
     /**
      * Check and unlock achievements based on the type and count.
