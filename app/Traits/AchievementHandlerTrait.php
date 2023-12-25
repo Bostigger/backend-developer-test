@@ -1,6 +1,5 @@
 <?php
 
-namespace App;
 
 namespace App\Traits;
 
@@ -8,6 +7,7 @@ use App\Events\AchievementUnlocked;
 use App\Events\BadgeUnlocked;
 use App\Helpers\AchievementHelper;
 use App\Services\AchievementService;
+use Log;
 
 trait AchievementHandlerTrait
 {
@@ -35,6 +35,8 @@ trait AchievementHandlerTrait
             if ($count === $threshold) {
                 $achievementEnumCase = AchievementHelper::mapKeyToAchievementEnum($key);
                 $achievementName = $achievementEnumCase->value;
+                // Log before firing the event
+                \Log::info("User {$user->id} unlocked achievement: {$achievementName}");
                 event(new AchievementUnlocked($achievementName, $user));
                 break;
             }
@@ -54,9 +56,12 @@ trait AchievementHandlerTrait
         $nextBadgeInfo = $achievementService->getNextBadgeInfo($user);
 
         if ($nextBadgeInfo[0] !== $currentBadge) {
+            // Log the badge update
+            \Log::info("User {$user->id} has earned a new badge: {$nextBadgeInfo[0]}");
             event(new BadgeUnlocked($nextBadgeInfo[0], $user));
         }
     }
 
 
 }
+git commit -m "Ensure PSR standards compliance"
