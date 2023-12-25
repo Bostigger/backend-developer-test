@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Services\AchievementService;
-use Illuminate\Http\Request;
+use Exception;
 
 class AchievementsController extends Controller
 {
@@ -16,7 +16,7 @@ class AchievementsController extends Controller
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function index(User $user)
     {
