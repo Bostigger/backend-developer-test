@@ -145,3 +145,11 @@ This will return an eloquent relationship for lessons watched by a user.
 
 comments
 This will return an eloquent relationship for comments written by a user.
+
+## **How Your Submission Will Be Assessed**
+
+Your submission will be assessed on the following:
+
+- **Meets All Criteria -** The solution meets all the criteria outlined in this document.
+- **Code Quality** - The code is readable, elegant, and could be easily expanded in the future (for example, the addition of new achievements or badges)
+- **Test Coverage -** Your tests cover all possible scenarios and we would feel confident there are no issues deploying your code to production.
